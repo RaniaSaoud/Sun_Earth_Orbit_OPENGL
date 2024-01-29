@@ -1,0 +1,20 @@
+#version 330 core
+out vec4 FragColor;
+in vec2 TexCoord;
+
+// Texture samplers
+uniform sampler2D texture1; // Earth texture
+uniform sampler2D texture2; // Sun texture
+
+// Uniform to choose the texture
+uniform int textureSelector;
+
+void main() {
+    if (textureSelector == 1) {
+        FragColor = texture(texture1, TexCoord); // Use Earth texture
+    } else if (textureSelector == 2) {
+        FragColor = texture(texture2, TexCoord); // Use Sun texture
+    } else {
+        FragColor = vec4(1.0, 1.0, 1.0, 1.0); // Fallback color (white)
+    }
+}
